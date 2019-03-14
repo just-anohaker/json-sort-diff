@@ -8,8 +8,7 @@ function main() {
     const context = {};
     context.appDir = path.resolve(__dirname);
 
-    program
-        .version("1.0.0");
+    program.version("1.0.0");
 
     const commandsDir = path.resolve(__dirname, "lib", "commands");
     const commandFiles = fs.readdirSync(commandsDir);
