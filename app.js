@@ -9,15 +9,16 @@ function main() {
     context.appDir = path.resolve(__dirname);
 
     program
-        .version("1.0.0")
+        .version("1.0.0");
 
-    const commandFiles = fs.readdirSync(path.resolve(__dirname, "lib", "commands"));
+    const commandsDir = path.resolve(__dirname, "lib", "commands");
+    const commandFiles = fs.readdirSync(commandsDir);
     commandFiles.forEach(el => {
         if (el.endsWith(".js")) {
-            const CommandFunc = require(path.resolve(__dirname, "lib", "commands", el));
+            const CommandFunc = require(path.resolve(commandsDir, el));
             CommandFunc(context);
         }
-    })
+    });
 
     program.parse(process.argv);
 }
